@@ -333,7 +333,7 @@ const teamMembers = [
   },
   {
     name: 'Chip Ransler',
-    role: 'Founder',
+    role: 'Founder / Managing Partner',
     initials: 'CR',
     portrait: chipPortrait,
   },
