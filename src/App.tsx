@@ -1,5 +1,6 @@
 import { useEffect, type CSSProperties } from 'react'
 import andyPortrait from './assets/andy-page.png'
+import chipPortrait from './assets/chip-ransler.png'
 import richmondImage from './assets/richmond-pixel.png'
 import spitfireLogo from './assets/spit-fire-logo.png'
 import './App.css'
@@ -323,10 +324,19 @@ const whyNamePillars = [
   },
 ]
 
-const teamPoints = [
-  'Andy Page leads the engagement, sets the bar for taste and speed, and stays close to the work.',
-  'Each project gets a small fractional team assembled around the actual problem: builders, automation specialists, designers, growth operators, data people, or QA as needed.',
-  'The team stays intentionally small so decisions are fast, context stays tight, and the work does not turn into agency bloat.',
+const teamMembers = [
+  {
+    name: 'Andy Page',
+    role: 'Founder / Managing Partner',
+    initials: 'AP',
+    portrait: andyPortrait,
+  },
+  {
+    name: 'Chip Ransler',
+    role: 'Founder',
+    initials: 'CR',
+    portrait: chipPortrait,
+  },
 ]
 
 function useRevealAnimations(routeKey: string) {
@@ -365,27 +375,36 @@ function TeamSection() {
       <div className="team-panel" data-reveal>
         <div className="team-copy">
           <p className="eyebrow">Team</p>
-          <h2 id="team-title">Founder-led, project-built teams.</h2>
+          <h2 id="team-title">Founders and project teams.</h2>
           <p>
-            Andy Page is the founder and managing partner of Spitfire Works.
-            He leads the work directly, then spins up quick, nimble fractional
-            teams of implementors around each project.
+            Spitfire Works is led by Andy Page and Chip Ransler. Engagements
+            are founder-led, with small implementation teams assembled around
+            the work required for each project.
           </p>
-          <ul className="team-point-list">
-            {teamPoints.map((point) => (
-              <li key={point}>{point}</li>
-            ))}
-          </ul>
         </div>
-        <aside className="founder-profile" aria-label="Andy Page profile">
-          <div className="founder-portrait">
-            <img src={andyPortrait} alt="Illustrated portrait of Andy Page" />
+        <div className="team-details" aria-label="Spitfire Works founders">
+          <div className="team-roster">
+            {teamMembers.map((member) => (
+              <article className="team-member" key={member.name}>
+                <div className="team-member-mark" aria-hidden="true">
+                  {member.portrait ? (
+                    <img src={member.portrait} alt="" />
+                  ) : (
+                    <span>{member.initials}</span>
+                  )}
+                </div>
+                <div>
+                  <h3>{member.name}</h3>
+                  <p>{member.role}</p>
+                </div>
+              </article>
+            ))}
           </div>
-          <div>
-            <span>Andy Page</span>
-            <p>Founder / Managing Partner</p>
-          </div>
-        </aside>
+          <p className="team-note">
+            Project teams may include developers, automation specialists,
+            designers, growth operators, data specialists, and QA.
+          </p>
+        </div>
       </div>
     </section>
   )
